@@ -9,13 +9,14 @@ module Knight
   def valid_knight_moves(position)
     x, y = position
 
-    KNIGHT_MOVES.map { |dx, dy| [x + dx, y + dy] }.select { |new_x, new_y| (0..7).cover?(new_x) && (0..7).cover?(new_y)}
+    KNIGHT_MOVES.map { |dx, dy| [x + dx, y + dy] } 
+                .select { |new_x, new_y| (0..7).cover?(new_x) && (0..7).cover?(new_y) }
   end
 
-  def knight_moves(start,finish)
+  def knight_moves(start, finish)
     return 0 if start == finish
 
-    queue = [[start], 0, [start]]
+    queue = [[start, 0, [start]]]
     visited = Set.new([start])
     paths = []
 
